@@ -8,19 +8,6 @@ import json
 from salesgpt.agents import SalesGPT
 from langchain.chat_models import AzureChatOpenAI
 
-
-
-
-# import your OpenAI key (put in your .env file)
-with open('.env','r') as f:
-    env_file = f.readlines()
-envs_dict = {key.strip("'") :value.strip("\n") for key, value in [(i.split('=')) for i in env_file]}
-os.environ['OPENAI_API_KEY'] = envs_dict['OPENAI_API_KEY']
-os.environ["OPENAI_API_TYPE"] = envs_dict["OPENAI_API_TYPE"]
-os.environ["OPENAI_API_BASE"] = envs_dict["OPENAI_API_BASE"]
-os.environ["OPENAI_API_VERSION"] = envs_dict["OPENAI_API_VERSION"]
-os.environ["DEPLOYMENT_NAME"] = envs_dict["DEPLOYMENT_NAME"]
-
 st.set_page_config(
     page_title="Sleep Haven",
     page_icon=":robot:"
