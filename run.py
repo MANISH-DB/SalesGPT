@@ -60,6 +60,7 @@ if input_text:
     sales_agent.human_step(input_text)
     sales_agent.conversation_history = st.session_state.history
     st.session_state.history.append("User: " + input_text + " <END_OF_TURN>")
+    print(st.session_state.history[-1])
     sales_agent.step()
     generated_message = sales_agent.conversation_history[-1]
     st.session_state.generated.append(sales_agent.conversation_history[-1][:-13])
