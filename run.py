@@ -30,37 +30,39 @@ sales_agent = SalesGPT.from_llm(llm, verbose=False,
                             that are designed to meet the unique 
                             needs of our customers.''')
 
-
-
 if 'generated' not in st.session_state:
     st.session_state['generated'] = []
     st.session_state['history'] = []
-    sales_agent.step()
-    st.session_state.generated.append(sales_agent.conversation_history[-1])
-    st.session_state.history.append(sales_agent.conversation_history[-1])
-    message(st.session_state["generated"], key="initial")
-    print("no history")
-
-if not st.session_state.history:
     sales_agent.seed_agent()
+    sales_agent.step()
+    st.session_state.generated.append(sales_agent.conversation_history[-1][:-13])
+    st.session_state.history.append(sales_agent.conversation_history[-1])
 
 if 'past' not in st.session_state:
     st.session_state['past'] = []
 
+#get user input
+if 'words' not in st.session_state:
+    st.session_state.words = ''
+
+def submit():
+    st.session_state.input = ''
+    st.session_state.words = st.session_state.input
+
 def get_text():
-    input_text = st.text_input("You: ")
-    return input_text 
+    input_text = st.text_input("You: ", key=input, on_change=submit)
+    return input_text
 
-human_input = get_text()
-st.session_state.past.append(human_input)
+input_text = get_text()
+st.session_state.past.append(input_text)
 
-if human_input:
-    sales_agent.human_step(human_input)
+if input_text:
+    sales_agent.human_step(input_text)
     sales_agent.conversation_history = st.session_state.history
-    st.session_state.history.append("User: " + human_input + " <END_OF_TURN>")
+    st.session_state.history.append("User: " + input_text + " <END_OF_TURN>")
     sales_agent.step()
-    st.session_state.generated.append(sales_agent.conversation_history[-1])
-    st.session_state.history.append(sales_agent.conversation_history[-1])
+    generated_message = sales_agent.conversation_history[-1]
+    st.session_state.generated.append(sales_agent.conversation_history[-1][:-13])
     st.write(st.session_state)
 
 if st.session_state['generated']:
