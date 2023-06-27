@@ -63,7 +63,7 @@ if input_text:
     sales_agent.step()
     generated_message = sales_agent.conversation_history[-1]
     st.session_state.generated.append(sales_agent.conversation_history[-1][:-13])
-    st.write(st.session_state)
+    # st.write(st.session_state)
 
 if st.session_state['generated']:
     for i in range(len(st.session_state['generated'])-1, -1, -1):
