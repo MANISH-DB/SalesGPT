@@ -2,17 +2,20 @@ from langchain.embeddings.openai import OpenAIEmbeddings
 from langchain.vectorstores.pgvector import PGVector
 from langchain.vectorstores.pgvector import DistanceStrategy
 import os
-
+from dotenv import load_dotenv
+load_dotenv()
 def get_db():
+    # db_port=int(os.environ.get("PGVECTOR_PORT", "5432"))
+    # print(db_port)
     DEFAULT_DISTANCE_STRATEGY = DistanceStrategy.EUCLIDEAN
     CONNECTION_STRING = PGVector.connection_string_from_db_params(
-        driver=os.environ.get("PGVECTOR_DRIVER", "psycopg2"),
-        host=os.environ.get("PGVECTOR_HOST", "3.1.107.148"),
+        driver=os.environ.get("PGVECTOR_DRIVER"),
+        host=os.environ.get("PGVECTOR_HOST"),
         port=int(os.environ.get("PGVECTOR_PORT", "5432")),
-        database=os.environ.get("PGVECTOR_DATABASE", "salesgpt"),
-        user=os.environ.get("PGVECTOR_USER", "postgres"),
-        password=os.environ.get("PGVECTOR_PASSWORD", "admin"),
-    )
+        database=os.environ.get("PGVECTOR_DATABASE"),
+        user=os.environ.get("PGVECTOR_USER"),
+        password=os.environ.get("PGVECTOR_PASSWORD"),
+    )   
     embeddings = OpenAIEmbeddings(deployment="chatbot-embedding-ada-dev")
     return PGVector.from_existing_index(
     embedding=embeddings,
