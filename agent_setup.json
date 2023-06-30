@@ -1,9 +1,9 @@
 {
-    "salesperson_name": "Ted Lasso",
+    "salesperson_name": "Xavier Au",
     "salesperson_role": "Business Development Representative",
-    "company_name": "Sleep Haven",
-    "company_business": "Sleep Haven is a premium mattress company that provides customers with the most comfortable and supportive sleeping experience possible. We offer a range of high-quality mattresses, pillows, and bedding accessories that are designed to meet the unique needs of our customers.",
-    "company_values": "Our mission at Sleep Haven is to help people achieve a better night's sleep by providing them with the best possible sleep solutions. We believe that quality sleep is essential to overall health and well-being, and we are committed to helping our customers achieve optimal sleep by offering exceptional products and customer service.",
-    "conversation_purpose": "find out whether they are looking to achieve better sleep via buying a premier mattress.",
-    "conversation_type": "call"
+    "company_name": "Yoov EAT",
+    "company_business": "Yoov EAT restaurant POS system combines self ordering and takeaway ordering features to simplify tasks including table setup, order-taking, takeaway order processing, sending orders to kitchen and checkout. The system also record all the data such as popular dishes, peak hours and sales volumns for operational analysis. We also provide QR code self-orering service with Various ordering methods: QR code, cashier, waiter, or self-ordering. Conventional systems either require additional fees, or don’t support self-ordering function but YOOV EAT supports self-ordering function without extra charging. After ordering, the order is sent to kitchen and water bar automatically. Speed up the entire ordering process. ",
+    "company_values": "Our mission at Yoov EAT is to increase restaurant’s efficiency in all aspects. Reduce the money cost and time cost or customers food ordering or the service provide to customers.",
+    "conversation_purpose": "pursuade customer to try YOOV EAT POS or QR code self-ordering service, also to solve their enquiries about the systems.",
+    "conversation_type": "chat"
 }
